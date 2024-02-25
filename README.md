@@ -1,11 +1,11 @@
 # docker-periodicrunner
 This is a small docker image to run scripts periodically. The image is based on the python alpine image.
-After startup, the image executes scripts which are located in /etc/periodic sub folders at defined intervals.
+After startup, the image executes scripts which are located in ```/etc/periodic``` sub folders at defined intervals.
 
 
 ## Directory structure of /etc/periodic
-The volume mounted at /etc/periodic is structured as shown below. The image will execute all scripts located in 
-the respective folders at the given intervals. For example, all scripts in /etc/periodic/1min are executed every minute.
+The volume mounted at ```/etc/periodic``` is structured as shown below. The image will execute all scripts located in 
+the respective folders at the given intervals. For example, all scripts in ```/etc/periodic/1min``` are executed every minute.
 
 
 ```
@@ -19,18 +19,18 @@ the respective folders at the given intervals. For example, all scripts in /etc/
 ```
 
 ## Defining activities after startup
-If additional activities shall be performed after startup, these steps can be defined with a script startup.sh which 
-resides in /opt/startup.
+If additional activities shall be performed after startup, these steps can be defined with a script ```startup.sh``` which 
+resides in ```/opt/startup```.
 
-The variable "RUN_ON_STARTUP" allows executing the scripts located in one of the subfolders in /etc/periodic directly
+The variable ```RUN_ON_STARTUP``` allows executing the scripts located in one of the subfolders in ```/etc/periodic``` directly
 after startup.
-For example, setting "RUN_ON_STARTUP=1min" directly executes all scripts in /etc/periodic/1min after starting up.
+For example, setting ```RUN_ON_STARTUP=1min``` directly executes all scripts in ```/etc/periodic/1min``` after starting up.
 
 Please note, that all scripts must be set executable!
 
 ## Adding further assets
-The directory /opt/additional allows adding further scripts or additional assets. This can be useful for helper scripts
-that are called by the scripts in /etc/periodic.
+The directory ```/opt/additional``` allows adding further scripts or additional assets. This can be useful for helper scripts
+that are called by the scripts in ```/etc/periodic```.
 
 # Docker Compose example:
 
