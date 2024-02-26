@@ -1,4 +1,3 @@
-# FROM alpine:3.19.1
 FROM python:3.13.0a4-alpine
 
 ARG BUILD_DATE
@@ -16,7 +15,7 @@ RUN mkdir /etc/periodic/5min \
  &&  mkdir /etc/periodic/30min \
  &&  mkdir /opt/additional
 
-# script to configure/startup chrony (ntp)
+# script for configuration/startup
 COPY assets/startup.sh /bin/startup
 
 # marking volumes that need to be writable
@@ -24,5 +23,5 @@ VOLUME /etc/periodic
 VOLUME /opt/additional
 VOLUME /opt/startup
 
-# start chronyd in the foreground
+# script to run after start
 ENTRYPOINT [ "/bin/startup" ]
